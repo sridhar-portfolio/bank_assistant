@@ -90,11 +90,18 @@ if len(st.session_state.messages) == 0:
         user_query = chips[2]
     if col3.button(chips[3], use_container_width=True):
         user_query = chips[3]
-        
+
 # 4. Display existing chat messages
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
+
+        # If the message has stored sources, render them in an expander
+        if "sources" in message and message["sources"]:
+            with st.expander("📄 View Source Disclosures & Documents"):
+                for source in message["sources"]:
+                    st.markdown(f"- **{source['title']}** (Relevance Score: `{source['score']}`)")
+                    st.caption(f"*Excerpt:* \"{source['snippet']}\"")
 
 # 5. Handle Chat Input (Standard Streamlit chat bar)
 chat_input = st.chat_input("Type your banking question here...")
@@ -114,12 +121,24 @@ if user_query:
         response_placeholder = st.empty()
         
         # Dummy response for demonstration
-        retrieved_context, bot_response = rag_function(user_query, vector_folder_path, "giroplus_index", api_key)
+        retrieved_metadata, bot_response = rag_function(user_query, vector_folder_path, "giroplus_index", api_key)
         
         response_placeholder.markdown(bot_response)
+
+        retrieved_sources = [
+            {
+                "Title": f"{retrieved_metadata['product']} ({retrieved_metadata['document_type']})",
+                "Effective Date": retrieved_metadata['effective_date'],
+                "Source URL": retrieved_metadata['source_url']
+            }
+            ]
+        # 3. Render them using the expander code
+        with st.expander("📄 View Source Disclosures & Documents"):
+            st.markdown(f"- **{retrieved_sources['Title']}**")
+            st.caption(f"*Excerpt:* \"{retrieved_sources['Source URL']}\"")
         
     # Append assistant response to history
-    st.session_state.messages.append({"role": "assistant", "content": bot_response})
+    st.session_state.messages.append({"role": "assistant", "content": bot_response, "sources": retrieved_sources})
 
 #with st.form("my_form"):
 #    text = st.text_area(

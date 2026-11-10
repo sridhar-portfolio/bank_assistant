@@ -44,4 +44,4 @@ def rag_function(query, db_path, index_name, api_key):
 
     response=ai_msg.content
 
-    return retrieved_context, response
+    return retrieved_docs[0].metadata, response
