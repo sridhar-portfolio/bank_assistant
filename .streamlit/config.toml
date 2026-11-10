@@ -1,0 +1,15 @@
+[theme]
+# Primary accent color for buttons, sliders, and active elements
+primaryColor = "#0F2942"
+
+# Base background color for the main content area
+backgroundColor = "#F8F9FA"
+
+# Background color for sidebars, cards, and input fields
+secondaryBackgroundColor = "#E9ECEF"
+
+# Main text color for readability
+textColor = "#212529"
+
+# Font family ("sans serif", "serif", or "monospace")
+font = "sans serif"
