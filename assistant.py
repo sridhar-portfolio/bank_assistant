@@ -23,7 +23,9 @@ def rag_function(query, db_path, index_name, api_key):
 
     Remember to answer only based on the context provided and not from any other source. 
 
-    If the question cannot be answered based on the provided context, say I don’t know.
+    If the question cannot be answered based on the provided context, 
+    say 'I cannot find that information in our official product disclosure documents. 
+    Would you like me to connect you with a customer service representative?'.
 
     """
 
