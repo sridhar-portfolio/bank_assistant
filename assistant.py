@@ -2,9 +2,8 @@ from langchain_openai import ChatOpenAI
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 
-
-def rag_function(query, db_path, index_name):
-    embeddings=OpenAIEmbeddings(model="text-embedding-3-small")
+def rag_function(query, db_path, index_name, api_key):
+    embeddings=OpenAIEmbeddings(model="text-embedding-3-small", api_key=api_key)
 
     db=FAISS.load_local(folder_path=db_path, index_name=index_name, embeddings=embeddings, allow_dangerous_deserialization=True)
 
@@ -33,7 +32,8 @@ def rag_function(query, db_path, index_name):
     temperature=0,
     max_tokens=None,
     timeout=None,
-    max_retries=2
+    max_retries=2,
+    api_key=api_key
     )
 
     messages=[("human",augmented_prompt)]
