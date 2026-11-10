@@ -73,9 +73,10 @@ if len(st.session_state.messages) == 0:
     
     # Define your quick prompts
     chips = [
-        "What are the current savings account interest rates?",
-        "Compare your top two credit cards for travel.",
-        "What are the fees for international wire transfers?"
+        "Wie hoch ist die Entgelte für Zahlungsverkehrsdienstleistungen für Bargeldeinzahlungen an eigene Kunden am Schalter?",
+        "Wie hoch sind die Gebühren für Echtzeit-Überweisungsaufträge?",
+        "Wie wäre es mit einem Ersatzpasswort? Kostet mich das etwas?",
+        "Wie hoch ist die monatliche Kontoführungsgebühr?"
     ]
     
     # Create responsive columns for the chips
@@ -87,7 +88,9 @@ if len(st.session_state.messages) == 0:
         user_query = chips[1]
     if col3.button(chips[2], use_container_width=True):
         user_query = chips[2]
-
+    if col3.button(chips[3], use_container_width=True):
+        user_query = chips[3]
+        
 # 4. Display existing chat messages
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
