@@ -100,8 +100,8 @@ for message in st.session_state.messages:
         if "sources" in message and message["sources"]:
             with st.expander("📄 View Source Disclosures & Documents"):
                 for source in message["sources"]:
-                    st.markdown(f"- **{source['title']}** (Relevance Score: `{source['score']}`)")
-                    st.caption(f"*Excerpt:* \"{source['snippet']}\"")
+                    st.markdown(f"- **{source['Title']}**")
+                    st.caption(f"Effective Date: {source['Effective Date']} | [Link]({source['Source URL']})")
 
 # 5. Handle Chat Input (Standard Streamlit chat bar)
 chat_input = st.chat_input("Type your banking question here...")
