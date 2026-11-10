@@ -80,7 +80,7 @@ if len(st.session_state.messages) == 0:
     ]
     
     # Create responsive columns for the chips
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3, col4 = st.columns(2)
     
     if col1.button(chips[0], use_container_width=True):
         user_query = chips[0]
@@ -88,7 +88,7 @@ if len(st.session_state.messages) == 0:
         user_query = chips[1]
     if col3.button(chips[2], use_container_width=True):
         user_query = chips[2]
-    if col3.button(chips[3], use_container_width=True):
+    if col4.button(chips[3], use_container_width=True):
         user_query = chips[3]
 
 # 4. Display existing chat messages
@@ -98,7 +98,7 @@ for message in st.session_state.messages:
 
         # If the message has stored sources, render them in an expander
         if "sources" in message and message["sources"]:
-            with st.expander("📄 View Source Disclosures & Documents"):
+            with st.expander("📄 Offenlegungen und Dokumente anzeigen"):
                 for source in message["sources"]:
                     st.markdown(f"- **{source['Title']}**")
                     st.caption(f"Effective Date: {source['Effective Date']} | [Link]({source['Source URL']})")
@@ -133,7 +133,7 @@ if user_query:
             }
         ]
         # 3. Render them using the expander code
-        with st.expander("📄 View Source Disclosures & Documents"):
+        with st.expander("📄 Offenlegungen und Dokumente anzeigen"):
             for source in retrieved_sources:
                 st.markdown(f"- **{source['Title']}**")
                 st.caption(f"Effective Date: {source['Effective Date']} | [Link]({source['Source URL']})")
