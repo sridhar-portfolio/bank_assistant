@@ -127,15 +127,16 @@ if user_query:
 
         retrieved_sources = [
             {
-                "Title": f"{retrieved_metadata['product']} ({retrieved_metadata['document_type']})",
-                "Effective Date": retrieved_metadata['effective_date'],
-                "Source URL": retrieved_metadata['source_url']
+                "Title": f"{retrieved_metadata.get('product', 'Unknown Product')} ({retrieved_metadata.get('document_type', 'Policy')})",
+                "Effective Date": retrieved_metadata.get('effective_date', 'N/A'),
+                "Source URL": retrieved_metadata.get('source_url', '#')
             }
-            ]
+        ]
         # 3. Render them using the expander code
         with st.expander("📄 View Source Disclosures & Documents"):
-            st.markdown(f"- **{retrieved_sources['Title']}**")
-            st.caption(f"*Excerpt:* \"{retrieved_sources['Source URL']}\"")
+            for source in retrieved_sources:
+                st.markdown(f"- **{source['Title']}**")
+                st.caption(f"Effective Date: {source['Effective Date']} | [Link]({source['Source URL']})")
         
     # Append assistant response to history
     st.session_state.messages.append({"role": "assistant", "content": bot_response, "sources": retrieved_sources})
