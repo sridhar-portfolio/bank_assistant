@@ -80,16 +80,11 @@ if len(st.session_state.messages) == 0:
     ]
     
     # Create responsive columns for the chips
-    col1, col2, col3, col4 = st.columns(2)
-    
-    if col1.button(chips[0], use_container_width=True):
-        user_query = chips[0]
-    if col2.button(chips[1], use_container_width=True):
-        user_query = chips[1]
-    if col3.button(chips[2], use_container_width=True):
-        user_query = chips[2]
-    if col4.button(chips[3], use_container_width=True):
-        user_query = chips[3]
+    cols = st.columns(4)
+
+    for i, col in enumerate(cols):
+        if col.button(chips[i], use_container_width=True):
+            user_query = chips[i]
 
 # 4. Display existing chat messages
 for message in st.session_state.messages:
