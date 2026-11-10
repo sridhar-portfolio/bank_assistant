@@ -1,3 +1,5 @@
+os
 streamlit
 openai
 langchain-openai
+langchain-community
