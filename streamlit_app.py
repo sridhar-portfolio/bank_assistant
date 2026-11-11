@@ -6,7 +6,7 @@ from assistant import rag_function
 # Page configuration (must be the first Streamlit command)
 st.set_page_config(
     page_title="YourFinBank Assistant",
-    page_icon="🏦",
+    page_icon="assets/icons8-chatbot-40.png",
     layout="centered"
 )
 
@@ -18,6 +18,12 @@ st.markdown("""
     /* Hide default Streamlit footer and hamburger menu for a cleaner look */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
+
+    /* Reduce the default top padding of the main container */
+    .block-container {
+        padding-top: 2rem;  /* Change to 1rem or 0rem to pull content even higher */
+        padding-bottom: 2rem;
+    }
 
     /* Style chat message containers */
     .stChatMessage {
