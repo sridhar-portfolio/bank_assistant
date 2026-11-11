@@ -25,54 +25,6 @@ st.markdown("""
         padding-bottom: 0rem;
     }
 
-    /* Main App Background & Theme */
-    .stApp {
-        background-color: #020617; /* slate-950 */
-        color: #f8fafc;            /* slate-50 */
-    }
-
-    /* Style the Chat Container Card */
-    .chat-card {
-        background-color: #FFFFFF; /* slate-900 */
-        border: 1px solid #FFFFFF; /* slate-700 */
-        border-radius: 1rem;
-        padding: 20px;
-        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5);
-    }
-
-    /* Style Chat Input to match dark mode */
-    .stChatInputContainer input {
-        background-color: #FFFFFF !important;
-        color: #494848 !important;
-        border: 1px solid #FFFFFF !important;
-        border-radius: 0.75rem !important;
-    }
-
-    /* Style chat message containers */
-    .stChatMessage {
-        border-radius: 10px;
-        padding: 10px;
-        margin-bottom: 10px;
-    }
-    
-    /* Custom header styling */
-    .bank-header {
-        background-color: #0F2942;
-        color: white;
-        padding: 20px;
-        border-radius: 8px;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    /* Style for main assistant title/header */
-    .assistant-title {
-        font-size: 32px !important;
-        font-weight: 700;
-        color: #FFFFFF;
-        margin-bottom: 0px;
-    }
-    
     /* Style for 'Vorgeschlagene Fragen' section header */
     .section-header {
         font-size: 18px !important;
