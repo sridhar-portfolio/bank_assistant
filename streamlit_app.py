@@ -58,6 +58,12 @@ st.markdown("""
         margin-top: 20px;
         margin-bottom: 10px;
     }
+
+    .stButton > button {
+        justify-content: flex-start !important; /* Aligns content to the left in flex layout */
+        text-align: left !important;             /* Ensures text aligns left */
+        padding-left: 16px !important;         /* Adds breathing room from the left edge */
+    }
 </style>
 """, unsafe_allow_html=True
 )
