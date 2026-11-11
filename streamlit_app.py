@@ -71,25 +71,9 @@ st.caption("Fragen Sie mich alles zu den Produkten von YourFinBank, z. B. Giroko
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# 2. Render previous conversation messages
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
-
-        # If the message has stored sources, render them in an expander
-        if "sources" in message and message["sources"]:
-            with st.expander("📄 Offenlegungen und Dokumente anzeigen"):
-                for source in message["sources"]:
-                    st.markdown(f"- **{source['Title']}**")
-                    st.caption(f"Effective Date: {source['Effective Date']} | [Link]({source['Source URL']})")
-
 # =========================================================
-# 3. CAPTURE INPUT (Place chat_input here first!)
+# 3. PINNED CHIPS AT THE TOP
 # =========================================================
-
-# Handle Chat Input (Standard Streamlit chat bar)
-chat_input = st.chat_input("Geben Sie hier Ihre Frage zu Bankgeschäften ein ...")
-
 # Render Quick-Start Chips (Always visible)
 st.markdown("#### Vorgeschlagene Fragen")
 
@@ -101,18 +85,28 @@ chips = [
     "Wie hoch ist die monatliche Kontoführungsgebühr?"
 ]
 
+user_query = None
+
 # Check if a chip button was clicked
 for i, chip in enumerate(chips):
     if st.button(chip, use_container_width=True, key=f"chip_{i}"):
-        chat_input = chip
+        user_query = chip
+
+st.divider() # Adds a clean separation line below the chips
 
 # =========================================================
-# 4. PROCESS & RESPOND (Executes if chat_input OR chip used)
+# 4. CAPTURE CHAT INPUT (Floats at the bottom automatically)
 # =========================================================
-user_query = None
+# Handle Chat Input (Standard Streamlit chat bar)
+chat_input = st.chat_input("Geben Sie hier Ihre Frage zu Bankgeschäften ein ...")
+
 # If the user typed something OR clicked a chip, process it
 if chat_input:
     user_query = chat_input
+
+# =========================================================
+# 5. PROCESS INPUT & GENERATE RESPONSE
+# =========================================================
 
 if user_query:
     # Append user message to history
@@ -148,3 +142,18 @@ if user_query:
 
 # Force a rerun so the UI updates cleanly
     st.rerun()
+
+# =========================================================
+# 6. RENDER CONVERSATION HISTORY (Flows below the top chips)
+# =========================================================
+
+for msg in st.session_state.messages:
+    with st.chat_message(msg["role"]):
+        st.markdown(msg["content"])
+        
+        # <-- PARE IT HERE: Right inside the message loop!
+        if "sources" in msg and msg["sources"]:
+            with st.expander("📄 Offenlegungen und Dokumente anzeigen"):
+                for source in msg["sources"]:
+                    st.markdown(f"- **{source['Title']}**")
+                    st.caption(f"Effective Date: {source['Effective Date']} | [Link]({source['Source URL']})")
