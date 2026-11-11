@@ -125,24 +125,6 @@ vector_folder_path = os.path.join(current_dir, "vector_store")
 #    unsafe_allow_html=True,
 #)
 
-# Header matching your widget design
-st.markdown(
-    """
-    <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid #1e293b; margin-bottom: 20px;">
-        <div style="display: flex; align-items: center; gap: 12px;">
-            <div style="width: 36px; height: 36px; border-radius: 10px; background-color: rgba(13, 148, 136, 0.2); border: 1px solid rgba(13, 148, 136, 0.4); display: flex; align-items: center; justify-content: center; color: #2dd4bf;">
-                🏦
-            </div>
-            <div>
-                <h3 style="margin: 0; font-size: 14px; font-weight: bold; color: white;">Apex Financial AI <span style="font-size: 10px; background-color: rgba(13, 148, 136, 0.2); color: #2dd4bf; padding: 2px 6px; border-radius: 4px; font-family: monospace;">RAG v2.4</span></h3>
-                <p style="margin: 0; font-size: 11px; color: #94a3b8;">FastAPI backend • Qdrant embeddings</p>
-            </div>
-        </div>
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
-
 # =========================================================
 # 2. SESSION STATE & HISTORY
 # =========================================================
