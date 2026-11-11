@@ -81,7 +81,7 @@ vector_folder_path = os.path.join(current_dir, "vector_store")
 
 st.markdown(
     """
-    <h1 style="font-size: 28px; font-weight: 500; color: #1E3A8A; font-family: sans-serif; margin-bottom: 4px;">
+    <h1 style="font-size: 30px; font-weight: 500; color: #1E3A8A; font-family: sans-serif; margin-bottom: 4px;">
         🏦 YourFinBank Assistant
     </h1>
     <p style="font-size: 15px; color: #475569; font-family: sans-serif; margin-top: 0px; line-height: 1.4;">
