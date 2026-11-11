@@ -35,16 +35,36 @@ st.markdown("""
         text-align: center;
         margin-bottom: 20px;
     }
-</style>
-""", unsafe_allow_html=True)
 
-# Example usage of the header banner
-#st.markdown("""
-#<div class="bank-header">
-#    <h2>YourFinBank Virtual Assistant</h2>
-#    <p>Secure, 24/7 Support for Savings, Credit Cards, and Loans</p>
-#</div>
-#""", unsafe_allow_html=True)
+    /* Style for main assistant title/header */
+    .assistant-title {
+        font-size: 32px !important;
+        font-weight: 700;
+        color: #0F172A; /* Dark slate */
+        margin-bottom: 0px;
+    }
+    
+    /* Style for 'Vorgeschlagene Fragen' section header */
+    .section-header {
+        font-size: 18px !important;
+        font-weight: 600;
+        color: #475569; /* Muted gray */
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+</style>
+""", unsafe_allow_html=True
+)
+
+# Usage in your app:
+st.markdown(
+    '<p class="assistant-title">YourFinBank Assistant</p>',
+    unsafe_allow_html=True,
+)
+st.markdown(
+    '<p class="section-header">Vorgeschlagene Fragen</p>',
+    unsafe_allow_html=True,
+)
 
 ##########################################################################
 
