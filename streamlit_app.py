@@ -79,10 +79,8 @@ st.markdown("#### Vorgeschlagene Fragen")
 
 # Define your quick prompts
 chips = [
-    "Wie hoch ist die Entgelte für Zahlungsverkehrsdienstleistungen für Bargeldeinzahlungen an eigene Kunden am Schalter?",
-    "Wie hoch sind die Gebühren für Echtzeit-Überweisungsaufträge?",
-    "Wie wäre es mit einem Ersatzpasswort? Kostet mich das etwas?",
-    "Wie hoch ist die monatliche Kontoführungsgebühr?"
+    "Wie hoch ist die monatliche Kontoführungsgebühr?",
+    "Wie hoch sind die Gebühren für Echtzeit-Überweisungsaufträge?"    
 ]
 
 user_query = None
