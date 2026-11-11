@@ -103,8 +103,8 @@ if "messages" not in st.session_state:
 
 st.markdown(
     """
-    <h1 style="font-size: 18px; font-weight: 500; color: #1E3A8A; font-family: sans-serif; margin-bottom: 4px;">
-        Vorgeschlagene Fragen
+    <h1 style="font-size: 12px; font-weight: 500; color: #909090; font-family: sans-serif; margin-bottom: 4px;">
+        💡 Vorgeschlagene Fragen
     </h1>
     """,
     unsafe_allow_html=True,
