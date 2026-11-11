@@ -42,8 +42,8 @@ st.markdown("""
 
     /* Style Chat Input to match dark mode */
     .stChatInputContainer input {
-        background-color: #020617 !important;
-        color: #f8fafc !important;
+        background-color: #FFFFFF !important;
+        color: #494848 !important;
         border: 1px solid #334155 !important;
         border-radius: 0.75rem !important;
     }
@@ -95,7 +95,7 @@ st.markdown("""
     .stButton > button:hover {
         background-color: #909090 !important;
         color: #ffffff !important;
-        border-color: #0d9488 !important;
+        border-color: #909090 !important;
     }
 </style>
 """, unsafe_allow_html=True
