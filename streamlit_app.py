@@ -57,6 +57,16 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 # Build the safe path to your vector folder
 vector_folder_path = os.path.join(current_dir, "vector_store")
 
+# =========================================================
+# 1. HEADER SECTION (Place titles & captions here!)
+# =========================================================
+st.title("🏦 YourFinBank Assistant")
+st.caption("Fragen Sie mich alles zu den Produkten von YourFinBank, z. B. Girokonto, Sparkonto, Privatkredit oder Kreditkarte.")
+
+# =========================================================
+# 2. SESSION STATE & HISTORY
+# =========================================================
+
 # 1. Initialize session state
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -76,9 +86,6 @@ for message in st.session_state.messages:
 # =========================================================
 # 3. CAPTURE INPUT (Place chat_input here first!)
 # =========================================================
-
-st.title("🏦 YourFinBank Assistant")
-st.caption("Fragen Sie mich alles zu den Produkten von YourFinBank, z. B. Girokonto, Sparkonto, Privatkredit oder Kreditkarte.")
 
 # Handle Chat Input (Standard Streamlit chat bar)
 chat_input = st.chat_input("Geben Sie hier Ihre Frage zu Bankgeschäften ein ...")
