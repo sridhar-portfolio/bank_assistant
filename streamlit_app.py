@@ -63,6 +63,8 @@ st.markdown("""
         justify-content: flex-start !important; /* Aligns content to the left in flex layout */
         text-align: left !important;             /* Ensures text aligns left */
         padding-left: 16px !important;         /* Adds breathing room from the left edge */
+        margin-top: 2px;
+        margin-bottom: 2px;
     }
 </style>
 """, unsafe_allow_html=True
@@ -109,7 +111,7 @@ if "messages" not in st.session_state:
 
 st.markdown(
     """
-    <h1 style="font-size: 12px; font-weight: 500; color: #909090; font-family: sans-serif; margin-bottom: 4px;">
+    <h1 style="font-size: 12px; font-weight: 500; color: #909090; font-family: sans-serif; margin-bottom: 2px;">
         💡 Vorgeschlagene Fragen
     </h1>
     """,
