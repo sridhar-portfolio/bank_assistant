@@ -25,6 +25,29 @@ st.markdown("""
         padding-bottom: 0rem;
     }
 
+    /* Main App Background & Theme */
+    .stApp {
+        background-color: #020617; /* slate-950 */
+        color: #f8fafc;            /* slate-50 */
+    }
+
+    /* Style the Chat Container Card */
+    .chat-card {
+        background-color: #0f172a; /* slate-900 */
+        border: 1px solid #334155; /* slate-700 */
+        border-radius: 1rem;
+        padding: 20px;
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5);
+    }
+
+    /* Style Chat Input to match dark mode */
+    .stChatInputContainer input {
+        background-color: #020617 !important;
+        color: #f8fafc !important;
+        border: 1px solid #334155 !important;
+        border-radius: 0.75rem !important;
+    }
+
     /* Style chat message containers */
     .stChatMessage {
         border-radius: 10px;
@@ -59,12 +82,20 @@ st.markdown("""
         margin-bottom: 10px;
     }
 
+    /* Style Prompt Chips */
     .stButton > button {
-        justify-content: flex-start !important; /* Aligns content to the left in flex layout */
-        text-align: left !important;             /* Ensures text aligns left */
-        padding-left: 16px !important;         /* Adds breathing room from the left edge */
-        margin-top: 2px;
-        margin-bottom: 2px;
+        background-color: #1e293b !important;
+        color: #cbd5e1 !important;
+        border: 1px solid #334155 !important;
+        border-radius: 0.75rem !important;
+        text-align: left !important;
+        justify-content: flex-start !important;
+        font-size: 12px !important;
+    }
+    .stButton > button:hover {
+        background-color: #0f766e !important;
+        color: #ffffff !important;
+        border-color: #0d9488 !important;
     }
 </style>
 """, unsafe_allow_html=True
@@ -85,14 +116,29 @@ vector_folder_path = os.path.join(current_dir, "vector_store")
 # 1. HEADER SECTION (Place titles & captions here!)
 # =========================================================
 
+#st.markdown(
+#    """
+#    <p style="font-size: 15px; color: #475569; font-family: sans-serif; margin-top: 0px; line-height: 1.4;">
+#        Fragen Sie mich alles zu den Produkten von YourFinBank, z. B. Girokonto, Sparkonto, Privatkredit oder Kreditkarte.
+#    </p>
+#    """,
+#    unsafe_allow_html=True,
+#)
+
+# Header matching your widget design
 st.markdown(
     """
-    <h1 style="font-size: 30px; font-weight: 500; color: #1E3A8A; font-family: sans-serif; margin-bottom: 4px;">
-        YourFinBank Assistant
-    </h1>
-    <p style="font-size: 15px; color: #475569; font-family: sans-serif; margin-top: 0px; line-height: 1.4;">
-        Fragen Sie mich alles zu den Produkten von YourFinBank, z. B. Girokonto, Sparkonto, Privatkredit oder Kreditkarte.
-    </p>
+    <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid #1e293b; margin-bottom: 20px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 36px; height: 36px; border-radius: 10px; background-color: rgba(13, 148, 136, 0.2); border: 1px solid rgba(13, 148, 136, 0.4); display: flex; align-items: center; justify-content: center; color: #2dd4bf;">
+                🏦
+            </div>
+            <div>
+                <h3 style="margin: 0; font-size: 14px; font-weight: bold; color: white;">Apex Financial AI <span style="font-size: 10px; background-color: rgba(13, 148, 136, 0.2); color: #2dd4bf; padding: 2px 6px; border-radius: 4px; font-family: monospace;">RAG v2.4</span></h3>
+                <p style="margin: 0; font-size: 11px; color: #94a3b8;">FastAPI backend • Qdrant embeddings</p>
+            </div>
+        </div>
+    </div>
     """,
     unsafe_allow_html=True,
 )
@@ -103,7 +149,10 @@ st.markdown(
 
 # 1. Initialize session state
 if "messages" not in st.session_state:
-    st.session_state.messages = []
+    st.session_state.messages = [{
+        "role": "assistant", 
+        "content": "Hallo! Ich bin Ihr KI-Banking-Assistent, der auf einer maßgeschneiderten RAG-Pipeline basiert. Fragen Sie mich alles zu Girokonten, Sparkonten, Kreditkarten, Privatkrediten und mehr."
+    }]
 
 # =========================================================
 # 3. PINNED CHIPS AT THE TOP
