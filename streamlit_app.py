@@ -154,7 +154,7 @@ if user_query:
             }
         ]
         # 3. Render them using the expander code
-        with st.expander("📄 Offenlegungen und Dokumente anzeigen"):
+        with st.expander("📄 Quellen"):
             for source in retrieved_sources:
                 st.markdown(f"- **{source['Title']}**")
                 st.caption(f"Effective Date: {source['Effective Date']} | [Link]({source['Source URL']})")
