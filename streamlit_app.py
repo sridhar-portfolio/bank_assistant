@@ -65,7 +65,7 @@ if "messages" not in st.session_state:
 user_query = None
 
 st.title("🏦 YourFinBank Assistant")
-st.caption("Ask me anything about savings accounts, credit cards, loans, and banking policies.")
+st.caption("Fragen Sie mich alles zu den Produkten von YourFinBank, z. B. Girokonto, Sparkonto, Privatkredit oder Kreditkarte.")
 
 # 3. Render Quick-Start Chips ONLY if the conversation is empty
 if len(st.session_state.messages) == 0:
@@ -79,12 +79,10 @@ if len(st.session_state.messages) == 0:
         "Wie hoch ist die monatliche Kontoführungsgebühr?"
     ]
     
-    # Create responsive columns for the chips
-    cols = st.columns(4)
-
-    for i, col in enumerate(cols):
-        if col.button(chips[i], use_container_width=True):
-            user_query = chips[i]
+    # Create chips
+    for chip in chips:
+        if st.button(chip, use_container_width=True):
+            user_query = chip
 
 # 4. Display existing chat messages
 for message in st.session_state.messages:
@@ -99,7 +97,7 @@ for message in st.session_state.messages:
                     st.caption(f"Effective Date: {source['Effective Date']} | [Link]({source['Source URL']})")
 
 # 5. Handle Chat Input (Standard Streamlit chat bar)
-chat_input = st.chat_input("Type your banking question here...")
+chat_input = st.chat_input("Geben Sie hier Ihre Frage zu Bankgeschäften ein ...")
 
 # If the user typed something OR clicked a chip, process it
 if chat_input:
