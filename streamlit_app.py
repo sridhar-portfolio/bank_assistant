@@ -57,36 +57,11 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 # Build the safe path to your vector folder
 vector_folder_path = os.path.join(current_dir, "vector_store")
 
-# 1. Initialize chat history in session state
+# 1. Initialize session state
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# 2. Initialize a variable to hold user input (from chat input OR chips)
-user_query = None
-
-st.title("🏦 YourFinBank Assistant")
-st.caption("Fragen Sie mich alles zu den Produkten von YourFinBank, z. B. Girokonto, Sparkonto, Privatkredit oder Kreditkarte.")
-
-# 3. Render Quick-Start Chips (Always visible)
-st.markdown("#### Vorgeschlagene Fragen")
-
-# Define your quick prompts
-chips = [
-    "Wie hoch ist die Entgelte für Zahlungsverkehrsdienstleistungen für Bargeldeinzahlungen an eigene Kunden am Schalter?",
-    "Wie hoch sind die Gebühren für Echtzeit-Überweisungsaufträge?",
-    "Wie wäre es mit einem Ersatzpasswort? Kostet mich das etwas?",
-    "Wie hoch ist die monatliche Kontoführungsgebühr?"
-]
-
-# Track if a chip was clicked during this rerun
-chat_input = None
-
-# Check if a chip button was clicked
-for i, chip in enumerate(chips):
-    if st.button(chip, use_container_width=True, key=f"chip_{i}"):
-        chat_input = chip
-
-# 4. Display existing chat messages
+# 2. Render previous conversation messages
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
@@ -98,8 +73,35 @@ for message in st.session_state.messages:
                     st.markdown(f"- **{source['Title']}**")
                     st.caption(f"Effective Date: {source['Effective Date']} | [Link]({source['Source URL']})")
 
-# 5. Handle Chat Input (Standard Streamlit chat bar)
+# =========================================================
+# 3. CAPTURE INPUT (Place chat_input here first!)
+# =========================================================
+
+st.title("🏦 YourFinBank Assistant")
+st.caption("Fragen Sie mich alles zu den Produkten von YourFinBank, z. B. Girokonto, Sparkonto, Privatkredit oder Kreditkarte.")
+
+# Handle Chat Input (Standard Streamlit chat bar)
 chat_input = st.chat_input("Geben Sie hier Ihre Frage zu Bankgeschäften ein ...")
+
+# Render Quick-Start Chips (Always visible)
+st.markdown("#### Vorgeschlagene Fragen")
+
+# Define your quick prompts
+chips = [
+    "Wie hoch ist die Entgelte für Zahlungsverkehrsdienstleistungen für Bargeldeinzahlungen an eigene Kunden am Schalter?",
+    "Wie hoch sind die Gebühren für Echtzeit-Überweisungsaufträge?",
+    "Wie wäre es mit einem Ersatzpasswort? Kostet mich das etwas?",
+    "Wie hoch ist die monatliche Kontoführungsgebühr?"
+]
+
+# Check if a chip button was clicked
+for i, chip in enumerate(chips):
+    if st.button(chip, use_container_width=True, key=f"chip_{i}"):
+        chat_input = chip
+
+# =========================================================
+# 4. PROCESS & RESPOND (Executes if chat_input OR chip used)
+# =========================================================
 
 # If the user typed something OR clicked a chip, process it
 if chat_input:
@@ -108,6 +110,7 @@ if chat_input:
 if user_query:
     # Append user message to history
     st.session_state.messages.append({"role": "user", "content": user_query})
+
     with st.chat_message("user"):
         st.markdown(user_query)
 
@@ -136,12 +139,5 @@ if user_query:
     # Append assistant response to history
     st.session_state.messages.append({"role": "assistant", "content": bot_response, "sources": retrieved_sources})
 
-#with st.form("my_form"):
-#    text = st.text_area(
-#        "Enter text:",
-#        "Wie hoch ist die Entgelte für Zahlungsverkehrsdienstleistungen für Bargeldeinzahlungen an eigene Kunden am Schalter?",
-#    )
-#    submitted = st.form_submit_button("Submit")
-#    if submitted:
-#        retrieved_context, response = rag_function(text, vector_folder_path, "giroplus_index", api_key)
-#        st.info(response)
+# Force a rerun so the UI updates cleanly
+    st.rerun()
