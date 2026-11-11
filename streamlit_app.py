@@ -102,7 +102,7 @@ for i, chip in enumerate(chips):
 # =========================================================
 # 4. PROCESS & RESPOND (Executes if chat_input OR chip used)
 # =========================================================
-
+user_query = None
 # If the user typed something OR clicked a chip, process it
 if chat_input:
     user_query = chat_input
