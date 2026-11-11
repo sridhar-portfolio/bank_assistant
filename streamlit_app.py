@@ -79,19 +79,12 @@ chips = [
 ]
 
 # Track if a chip was clicked during this rerun
-selected_chip = None
+chat_input = None
 
-# Create chips vertically stacked
+# Check if a chip button was clicked
 for i, chip in enumerate(chips):
     if st.button(chip, use_container_width=True, key=f"chip_{i}"):
-        selected_chip = chip
-
-# If the user clicked a chip, treat it as a new input
-if selected_chip:
-    user_query = selected_chip
-    # Append to chat messages so it processes like normal input
-    st.session_state.messages.append({"role": "user", "content": user_query})
-    st.rerun()
+        chat_input = chip
 
 # 4. Display existing chat messages
 for message in st.session_state.messages:
