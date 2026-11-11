@@ -96,7 +96,7 @@ st.divider() # Adds a clean separation line below the chips
 # 4. CAPTURE CHAT INPUT (Floats at the bottom automatically)
 # =========================================================
 # Handle Chat Input (Standard Streamlit chat bar)
-chat_input = st.chat_input("Geben Sie hier Ihre Frage zu Bankgeschäften ein ...")
+chat_input = st.chat_input("Geben Sie hier Ihre Frage ein ...")
 
 # If the user typed something OR clicked a chip, process it
 if chat_input:
