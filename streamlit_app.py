@@ -175,7 +175,7 @@ for msg in st.session_state.messages:
         
         # <-- PARE IT HERE: Right inside the message loop!
         if "sources" in msg and msg["sources"]:
-            with st.expander("📄 Offenlegungen und Dokumente anzeigen"):
+            with st.expander("📄 Quellen"):
                 for source in msg["sources"]:
                     st.markdown(f"- **{source['Title']}**")
                     st.caption(f"Effective Date: {source['Effective Date']} | [Link]({source['Source URL']})")
