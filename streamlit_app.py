@@ -39,12 +39,12 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Example usage of the header banner
-st.markdown("""
-<div class="bank-header">
-    <h2>YourFinBank Virtual Assistant</h2>
-    <p>Secure, 24/7 Support for Savings, Credit Cards, and Loans</p>
-</div>
-""", unsafe_allow_html=True)
+#st.markdown("""
+#<div class="bank-header">
+#    <h2>YourFinBank Virtual Assistant</h2>
+#    <p>Secure, 24/7 Support for Savings, Credit Cards, and Loans</p>
+#</div>
+#""", unsafe_allow_html=True)
 
 ##########################################################################
 
