@@ -67,22 +67,31 @@ user_query = None
 st.title("🏦 YourFinBank Assistant")
 st.caption("Fragen Sie mich alles zu den Produkten von YourFinBank, z. B. Girokonto, Sparkonto, Privatkredit oder Kreditkarte.")
 
-# 3. Render Quick-Start Chips ONLY if the conversation is empty
-if len(st.session_state.messages) == 0:
-    st.markdown("### Suggested Questions")
-    
-    # Define your quick prompts
-    chips = [
-        "Wie hoch ist die Entgelte für Zahlungsverkehrsdienstleistungen für Bargeldeinzahlungen an eigene Kunden am Schalter?",
-        "Wie hoch sind die Gebühren für Echtzeit-Überweisungsaufträge?",
-        "Wie wäre es mit einem Ersatzpasswort? Kostet mich das etwas?",
-        "Wie hoch ist die monatliche Kontoführungsgebühr?"
-    ]
-    
-    # Create chips
-    for chip in chips:
-        if st.button(chip, use_container_width=True):
-            user_query = chip
+# 3. Render Quick-Start Chips (Always visible)
+st.markdown("#### Vorgeschlagene Fragen")
+
+# Define your quick prompts
+chips = [
+    "Wie hoch ist die Entgelte für Zahlungsverkehrsdienstleistungen für Bargeldeinzahlungen an eigene Kunden am Schalter?",
+    "Wie hoch sind die Gebühren für Echtzeit-Überweisungsaufträge?",
+    "Wie wäre es mit einem Ersatzpasswort? Kostet mich das etwas?",
+    "Wie hoch ist die monatliche Kontoführungsgebühr?"
+]
+
+# Track if a chip was clicked during this rerun
+selected_chip = None
+
+# Create chips vertically stacked
+for i, chip in enumerate(chips):
+    if st.button(chip, use_container_width=True, key=f"chip_{i}"):
+        selected_chip = chip
+
+# If the user clicked a chip, treat it as a new input
+if selected_chip:
+    user_query = selected_chip
+    # Append to chat messages so it processes like normal input
+    st.session_state.messages.append({"role": "user", "content": user_query})
+    st.rerun()
 
 # 4. Display existing chat messages
 for message in st.session_state.messages:
