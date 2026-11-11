@@ -33,8 +33,8 @@ st.markdown("""
 
     /* Style the Chat Container Card */
     .chat-card {
-        background-color: #0f172a; /* slate-900 */
-        border: 1px solid #334155; /* slate-700 */
+        background-color: #FFFFFF; /* slate-900 */
+        border: 1px solid #FFFFFF; /* slate-700 */
         border-radius: 1rem;
         padding: 20px;
         box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5);
@@ -44,7 +44,7 @@ st.markdown("""
     .stChatInputContainer input {
         background-color: #FFFFFF !important;
         color: #494848 !important;
-        border: 1px solid #334155 !important;
+        border: 1px solid #FFFFFF !important;
         border-radius: 0.75rem !important;
     }
 
