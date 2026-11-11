@@ -21,8 +21,8 @@ st.markdown("""
 
     /* Reduce the default top padding of the main container */
     .block-container {
-        padding-top: 2rem;  /* Change to 1rem or 0rem to pull content even higher */
-        padding-bottom: 2rem;
+        padding-top: 0rem;  /* Change to 1rem or 0rem to pull content even higher */
+        padding-bottom: 0rem;
     }
 
     /* Style chat message containers */
