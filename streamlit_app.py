@@ -69,7 +69,7 @@ st.markdown("""
     .assistant-title {
         font-size: 32px !important;
         font-weight: 700;
-        color: #0F172A; /* Dark slate */
+        color: #FFFFFF;
         margin-bottom: 0px;
     }
     
@@ -84,8 +84,8 @@ st.markdown("""
 
     /* Style Prompt Chips */
     .stButton > button {
-        background-color: #1e293b !important;
-        color: #cbd5e1 !important;
+        background-color: #D4D4D4 !important;
+        color: #494848 !important;
         border: 1px solid #334155 !important;
         border-radius: 0.75rem !important;
         text-align: left !important;
@@ -93,7 +93,7 @@ st.markdown("""
         font-size: 12px !important;
     }
     .stButton > button:hover {
-        background-color: #0f766e !important;
+        background-color: #909090 !important;
         color: #ffffff !important;
         border-color: #0d9488 !important;
     }
